@@ -1,4 +1,4 @@
-nome = "Guilherme Arthur de Carvalho"
+nome = "Guilherme Comparotto Pucciarelli"
 
 print(nome[0])
 print(nome[-2])

@@ -1,5 +1,5 @@
 linguagens = ["python", "js", "c", "java", "csharp"]
 
-linguagens.remove("c")
+linguagens.pop()  # remove o último elemento da lista
 
-print(linguagens)  # ["python", "js", "java", "csharp"]
+print(linguagens)  # ["python", "js", "java"]
