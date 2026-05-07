@@ -21,11 +21,11 @@ utilizando autenticação segura via **JWT**.
 2. **Crie e ative o ambiente virtual:**
    python -m venv venv
 
-# Windows:
+#### Windows:
 
 venv\Scripts\activate
 
-# Linux/Mac:
+#### Linux/Mac:
 
 source venv/bin/activate
 

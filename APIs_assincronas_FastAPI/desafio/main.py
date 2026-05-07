@@ -19,7 +19,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
     user_dict = db_contas.get(username)
 
-    # Se o usuário não existe ou a senha não bate
+    # Se o usuário não existe ou a senha não bater
     if not user_dict or not verificar_senha(password, user_dict["senha_hash"]):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
