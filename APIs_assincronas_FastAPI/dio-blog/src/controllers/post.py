@@ -1,10 +1,11 @@
-from fastapi import status, APIRouter
-from schemas.post import PostIn, PostUpdateIn
-from views.post import PostOut
-from services.post import PostService
+from fastapi import APIRouter, Depends, status
 
+from src.schemas.post import PostIn, PostUpdateIn
+from src.security import login_required
+from src.services.post import PostService
+from src.views.post import PostOut
 
-router = APIRouter(prefix="/posts")
+router = APIRouter(prefix="/posts", dependencies=[Depends(login_required)])
 
 service = PostService()
 
@@ -20,15 +21,15 @@ async def create_post(post: PostIn):
 
 
 @router.get("/{id}", response_model=PostOut)
-async def read_posts(id: int):
+async def read_post(id: int):
     return await service.read(id)
 
 
 @router.patch("/{id}", response_model=PostOut)
-async def update_posts(id: int, post: PostUpdateIn):
+async def update_post(id: int, post: PostUpdateIn):
     return await service.update(id=id, post=post)
 
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT, response_model=None)
-async def delete_posts(id: int):
+async def delete_post(id: int):
     await service.delete(id)
